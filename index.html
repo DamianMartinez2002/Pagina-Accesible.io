@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Ball Z </title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header>
+        <h1>Bienvenidos Dragon Ball Z</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">inicio</a></li>
+                <li><a href="#mandamientos">Mandamientos</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content section -->
+    <main>
+        <section id="inicio">
+            <h2>Historia de dragon ball Z</h2>
+            <img src="https://images.alphacoders.com/647/thumb-1920-647552.jpg" alt="Culto del Cordero">
+            <p>
+                El Culto del Cordero tiene una historia misteriosa llena de devoción y lealtad a El Cordero.
+            </p>
+        </section>
+
+        <section id="mandamientos">
+            <h2>Mandamientos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Mandamiento</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Fe</td>
+                        <td>Creer en el poder del Cordero y en su capacidad para guiar a sus seguidores hacia la salvación.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Devoción</td>
+                        <td>Dedicar tiempo cada día para adorar al Cordero.</td>
+                    </tr>
+                    <!-- More rows as needed -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="eventos">
+            <h2>Eventos Próximos</h2>
+            <p>Consulta los eventos donde puedes aprender más sobre el culto.</p>
+            <ul>
+                <li>Ritual de devoción: 25 de octubre</li>
+                <li>Reunión de seguidores: 10 de noviembre</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Contact section with a short form -->
+    <section id="contacto">
+        <h2>Contáctanos</h2>
+        <form action="/submit" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Culto del Cordero. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
