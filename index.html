@@ -24,7 +24,7 @@
     <main>
         <section id="home">
             <h2>Dragon Ball Z History</h2>
-            <img src="https://i.ytimg.com/vi/I_fndd2_QvE/maxresdefault.jpg" alt="Dragon Ball Z Game" class="logo">
+            <img src="https://i.ytimg.com/vi/34T1AdDOof0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBt9YdtMOJZtQmmfwcjcRY3tvQ_Nw" alt="Dragon Ball Z Game" class="logo">
             <p>
                 Dragon Ball Z has a rich history filled with devotion and loyalty to the Z Fighters' cause.
             </p>
@@ -56,6 +56,31 @@
             </table>
         </section>
 
+        <section id="character-showcase">
+            <h2>Meet the Characters</h2>
+            <div class="character-grid">
+                <div class="character" onclick="showCharacterInfo('vegeta')">
+                    <img src="https://i.gifer.com/X9VB.gif" alt="Vegeta">
+                    <p>Vegeta</p>
+                </div>
+                <div class="character" onclick="showCharacterInfo('goku')">
+                    <img src="https://i.gifer.com/75Z8.gif" alt="Goku">
+                    <p>Goku</p>
+                </div>
+                <div class="character" onclick="showCharacterInfo('piccolo')">
+                    <img src="https://i.gifer.com/75ZA.gif" alt="Piccolo">
+                    <p>Gohan</p>
+                </div>
+            </div>
+        
+            <!-- Character description display -->
+            <div id="character-info" class="character-info">
+                <h3 id="character-name">Select a character</h3>
+                <p id="character-description"></p>
+            </div>
+        </section>
+        
+
         <section id="events">
             <h2>Upcoming Events</h2>
             <p>Check out the events where you can learn more about Dragon Ball Z and its community.</p>
@@ -65,6 +90,7 @@
             </ul>
         </section>
     </main>
+
 
     <!-- Contact section with a short form -->
     <section id="contact">
@@ -88,4 +114,30 @@
         <p>&copy; 2024 Dragon Ball Z. All rights reserved.</p>
     </footer>
 </body>
+<script>
+    function showCharacterInfo(character) {
+        const characters = {
+            vegeta: {
+                name: 'Vegeta',
+                description: 'Vegeta is the Prince of Saiyans, known for his pride and desire to surpass Goku.'
+            },
+            goku: {
+                name: 'Goku',
+                description: 'Goku is a Saiyan raised on Earth who constantly seeks to grow stronger and protect his friends.'
+            },
+            piccolo: {
+                name: 'Gohan',
+                description: 'Piccolo is a wise and powerful warrior from Namek who becomes a valuable ally to Goku and the others.'
+            }
+        };
+
+        // Get character info
+        const characterInfo = characters[character];
+
+        // Update HTML content
+        document.getElementById('character-name').textContent = characterInfo.name;
+        document.getElementById('character-description').textContent = characterInfo.description;
+    }
+</script>
+
 </html>
