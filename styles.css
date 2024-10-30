@@ -22,6 +22,33 @@ ul {
     list-style-type: none;
     padding: 0;
 }
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('https://www.irrompibles.net/irrwp/wp-content/uploads/2024/10/sparking_zero-1.jpg') center center/cover no-repeat;
+}
+
+.profile-container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8); /* Hacemos el fondo un poco más oscuro */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px #e0292980; /* Agregamos una sombra */
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 4px solid #f39c12; /* Borde dorado */
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
 
 /* Header */
 header {
@@ -128,6 +155,31 @@ th {
 tbody tr:nth-child(odd) {
     background-color: #cc0000;
 }
+.edit-btn, .delete-btn {
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-btn {
+    background-color: #ffcc00; /* Color amarillo para editar */
+}
+
+.edit-btn:hover {
+    background-color: #f39c12;
+}
+
+.delete-btn {
+    background-color: #ff4500; /* Color rojo para eliminar */
+}
+
+.delete-btn:hover {
+    background-color: #cc0000;
+}
+
 
 /* Secciones de contenido */
 .content-container {
@@ -140,7 +192,7 @@ tbody tr:nth-child(odd) {
 }
 
 h2 {
-    border-bottom: 2px solid #ffcc00;
+    border-bottom: 2px solid hwb(125 3% 6%);
     padding-bottom: 5px;
     margin-bottom: 20px;
 }
@@ -151,7 +203,7 @@ h2 {
 
 .character {
     margin: 20px 0;
-    border: 2px solid #ffcc00;
+    border: 2px solid hwb(125 3% 6%);
     border-radius: 10px;
     padding: 10px;
     background-color: #1c1c1c;
@@ -166,6 +218,44 @@ h2 {
     width: 50%;
     height: auto;
     border-radius: 10px;
+}
+/* Styles for the character form */
+#characterForm {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#characterForm label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+#characterForm input, 
+#characterForm textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffcc00;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+#characterList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#characterList li {
+    background-color: #cc0000;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#characterList li:hover {
+    background-color: #ff4500;
 }
 
 /* Form section */
