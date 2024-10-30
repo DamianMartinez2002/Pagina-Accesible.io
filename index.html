@@ -23,41 +23,30 @@
 
     <!-- Main content section -->
     <main>
-        <section id="home">
-            <h2>Dragon Ball Z History</h2>
-            <img src="https://i.ytimg.com/vi/34T1AdDOof0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBt9YdtMOJZtQmmfwcjcRY3tvQ_Nw" alt="Dragon Ball Z Game" class="logo">
-            <p>Dragon Ball Z has a rich history filled with devotion and loyalty to the Z Fighters' cause.</p>
+        <section class="hero">
+            <div class="profile-container">
+                <figure>
+                    <img src="https://i.gifer.com/75Z8.gif" alt="Arthur Morgan" class="profile-img">
+                    <figcaption>GOKU - PROTAGONISTA DE SPARKING ZERO!</figcaption>
+                </figure>
+                
+                
+            </div>
         </section>
-
         <section id="mandates">
-            <h2>Character Information</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Character</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Vegeta</td>
-                        <td>Believe in the power of Saiyans and their ability to guide their followers to strength and salvation.</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Goku</td>
-                        <td>The protagonist of Dragon Ball Z, a Saiyan raised on Earth. Goku seeks to grow stronger through combat.</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Gohan</td>
-                        <td>He has great fighting potential and prefers peace and education.</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h2>Favorite Character</h2>
+            <form id="characterForm">
+                <label for="characterName">Character Name:</label>
+                <input type="text" id="characterName" name="characterName" required>
+                <label for="characterDescription">Description:</label>
+                <textarea id="characterDescription" name="characterDescription" required></textarea>
+                <button type="submit">Add Character</button>
+            </form>
+        
+            <h3>Added Characters</h3>
+            <ul id="characterList"></ul>
         </section>
+        
 
         <section id="details">
             <div class="content-container">
@@ -123,19 +112,84 @@
         document.addEventListener('DOMContentLoaded', function() {
             const revealBtn = document.getElementById('revealBtn');
             const characterInfo = document.getElementById('character-info');
-
+            const characterForm = document.getElementById('characterForm');
+            const characterList = document.getElementById('characterList');
+        
             characterInfo.classList.add('hidden');
-
+        
             revealBtn.addEventListener('click', function() {
                 characterInfo.classList.toggle('hidden');
-
+        
                 if (!characterInfo.classList.contains('hidden')) {
                     this.textContent = 'Hide Characters';
                 } else {
                     this.textContent = 'Show Characters';
                 }
             });
+        
+            // Load characters from localStorage
+            const loadCharacters = () => {
+                const characters = JSON.parse(localStorage.getItem('characters')) || [];
+                characters.forEach(character => addCharacterToList(character.name, character.description));
+            };
+        
+            // Add character to the list and localStorage
+            const addCharacterToList = (name, description) => {
+                const li = document.createElement('li');
+                li.textContent = `${name}: ${description}`;
+                li.dataset.name = name; // Store name for editing and deleting
+        
+                const editBtn = document.createElement('button');
+                editBtn.textContent = 'Edit';
+                editBtn.className = 'edit-btn';
+                editBtn.onclick = () => editCharacter(name, description, li);
+        
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.onclick = () => deleteCharacter(name, li);
+        
+                li.appendChild(editBtn);
+                li.appendChild(deleteBtn);
+                characterList.appendChild(li);
+            };
+        
+            // Handle character form submission
+            characterForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+        
+                const characterName = document.getElementById('characterName').value;
+                const characterDescription = document.getElementById('characterDescription').value;
+        
+                // Add character to list and localStorage
+                const characters = JSON.parse(localStorage.getItem('characters')) || [];
+                characters.push({ name: characterName, description: characterDescription });
+                localStorage.setItem('characters', JSON.stringify(characters));
+        
+                addCharacterToList(characterName, characterDescription);
+                characterForm.reset();
+            });
+        
+            // Edit character function
+            const editCharacter = (name, description, li) => {
+                document.getElementById('characterName').value = name;
+                document.getElementById('characterDescription').value = description;
+        
+                deleteCharacter(name, li); // Remove character before re-adding after edit
+            };
+        
+            // Delete character function
+            const deleteCharacter = (name, li) => {
+                const characters = JSON.parse(localStorage.getItem('characters')) || [];
+                const updatedCharacters = characters.filter(character => character.name !== name);
+                localStorage.setItem('characters', JSON.stringify(updatedCharacters));
+                characterList.removeChild(li);
+            };
+        
+            // Load characters when the page is loaded
+            loadCharacters();
         });
+        
     </script>
 </body>
 </html>
