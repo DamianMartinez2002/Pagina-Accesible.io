@@ -9,15 +9,16 @@
 <body>
     <!-- Header with navigation -->
     <header>
-    <h1>Welcome to Dragon Ball Z</h1>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#mandates">Character</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+        <img src="https://i.gifer.com/CBan.gif" alt="Logo" class="nav-logo">
+        <h1>Welcome to Dragon Ball Z</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#mandates">Character</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Main content section -->
@@ -25,9 +26,7 @@
         <section id="home">
             <h2>Dragon Ball Z History</h2>
             <img src="https://i.ytimg.com/vi/34T1AdDOof0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBt9YdtMOJZtQmmfwcjcRY3tvQ_Nw" alt="Dragon Ball Z Game" class="logo">
-            <p>
-                Dragon Ball Z has a rich history filled with devotion and loyalty to the Z Fighters' cause.
-            </p>
+            <p>Dragon Ball Z has a rich history filled with devotion and loyalty to the Z Fighters' cause.</p>
         </section>
 
         <section id="mandates">
@@ -49,37 +48,48 @@
                     <tr>
                         <td>2</td>
                         <td>Goku</td>
-                        <td>He is the protagonist of Dragon Ball Z, a Saiyan raised on Earth. With a pure heart and a strong sense of justice, Goku constantly seeks to grow stronger through combat.</td>
+                        <td>The protagonist of Dragon Ball Z, a Saiyan raised on Earth. Goku seeks to grow stronger through combat.</td>
                     </tr>
-                    <!-- More rows as needed -->
+                    <tr>
+                        <td>3</td>
+                        <td>Gohan</td>
+                        <td>He has great fighting potential and prefers peace and education.</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
 
-        <section id="character-showcase">
-            <h2>Meet the Characters</h2>
-            <div class="character-grid">
-                <div class="character" onclick="showCharacterInfo('vegeta')">
-                    <img src="https://i.gifer.com/X9VB.gif" alt="Vegeta">
-                    <p>Vegeta</p>
+        <section id="details">
+            <div class="content-container">
+                <h2>Story Details</h2>
+                <p>Dragon Ball: Sparking! ZERO is a 3D fighting game inspired by the Dragon Ball Z anime, offering fast-paced battles with iconic characters, special moves, and destructible environments.</p>
+                <button id="revealBtn" class="styled-btn">Show Characters</button>
+                
+                <div id="character-info" class="hidden">
+                    <div class="character">
+                        <h3>Vegeta</h3>
+                        <figure>
+                            <img src="https://i.gifer.com/X9VB.gif" alt="Vegeta">
+                            <figcaption>Proud and competitive, he constantly seeks to surpass Goku.</figcaption>
+                        </figure>
+                    </div>
+                    <div class="character">
+                        <h3>Goku</h3>
+                        <figure>
+                            <img src="https://i.gifer.com/75Z8.gif" alt="Goku">
+                            <figcaption>Optimistic and carefree, he enjoys challenges and looks for strong opponents.</figcaption>
+                        </figure>
+                    </div>
+                    <div class="character">
+                        <h3>Gohan</h3>
+                        <figure>
+                            <img src="https://i.gifer.com/75ZA.gif" alt="Gohan">
+                            <figcaption>Intelligent and sensitive, he displays great fighting potential when facing threats.</figcaption>
+                        </figure>
+                    </div>
                 </div>
-                <div class="character" onclick="showCharacterInfo('goku')">
-                    <img src="https://i.gifer.com/75Z8.gif" alt="Goku">
-                    <p>Goku</p>
-                </div>
-                <div class="character" onclick="showCharacterInfo('piccolo')">
-                    <img src="https://i.gifer.com/75ZA.gif" alt="Piccolo">
-                    <p>Gohan</p>
-                </div>
-            </div>
-        
-            <!-- Character description display -->
-            <div id="character-info" class="character-info">
-                <h3 id="character-name">Select a character</h3>
-                <p id="character-description"></p>
             </div>
         </section>
-        
 
         <section id="events">
             <h2>Upcoming Events</h2>
@@ -91,20 +101,16 @@
         </section>
     </main>
 
-
     <!-- Contact section with a short form -->
     <section id="contact">
         <h2>Contact Us</h2>
         <form action="/submit" method="post">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
-
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
-
             <button type="submit">Send</button>
         </form>
     </section>
@@ -113,31 +119,23 @@
     <footer>
         <p>&copy; 2024 Dragon Ball Z. All rights reserved.</p>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealBtn = document.getElementById('revealBtn');
+            const characterInfo = document.getElementById('character-info');
+
+            characterInfo.classList.add('hidden');
+
+            revealBtn.addEventListener('click', function() {
+                characterInfo.classList.toggle('hidden');
+
+                if (!characterInfo.classList.contains('hidden')) {
+                    this.textContent = 'Hide Characters';
+                } else {
+                    this.textContent = 'Show Characters';
+                }
+            });
+        });
+    </script>
 </body>
-<script>
-    function showCharacterInfo(character) {
-        const characters = {
-            vegeta: {
-                name: 'Vegeta',
-                description: 'Vegeta is the Prince of Saiyans, known for his pride and desire to surpass Goku.'
-            },
-            goku: {
-                name: 'Goku',
-                description: 'Goku is a Saiyan raised on Earth who constantly seeks to grow stronger and protect his friends.'
-            },
-            piccolo: {
-                name: 'Gohan',
-                description: 'Piccolo is a wise and powerful warrior from Namek who becomes a valuable ally to Goku and the others.'
-            }
-        };
-
-        // Get character info
-        const characterInfo = characters[character];
-
-        // Update HTML content
-        document.getElementById('character-name').textContent = characterInfo.name;
-        document.getElementById('character-description').textContent = characterInfo.description;
-    }
-</script>
-
 </html>
