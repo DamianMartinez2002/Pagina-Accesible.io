@@ -1,86 +1,65 @@
-/* Archivo: styles.css */
-
 /* General */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #1d1d1d;
-    color: #fff;
+    background-color: #121212; /* Fondo oscuro accesible */
+    color: #f5f5f5; /* Texto claro para mejor contraste */
     animation: fadeIn 1s ease-in-out;
 }
 
 h1, h2 {
-    color: #ffcc00;
+    color: #ffd700; /* Amarillo dorado con suficiente contraste */
 }
 
 p {
     line-height: 1.6;
+    color: #e0e0e0; /* Contraste accesible con fondo oscuro */
 }
 
 ul {
     list-style-type: none;
     padding: 0;
 }
+
 .hero {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background: url('https://www.irrompibles.net/irrwp/wp-content/uploads/2024/10/sparking_zero-1.jpg') center center/cover no-repeat;
+    color: #ffffff; /* Contraste accesible sobre imagen */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Mejora legibilidad */
 }
 
 .profile-container {
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.8); /* Hacemos el fondo un poco más oscuro */
+    background-color: rgba(0, 0, 0, 0.95); /* Fondo más oscuro para mejor contraste */
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px #e0292980; /* Agregamos una sombra */
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
 }
 
 .profile-img {
     border-radius: 50%;
     width: 150px;
     height: 150px;
-    border: 4px solid #f39c12; /* Borde dorado */
+    border: 4px solid #ffd700; /* Contraste claro alrededor */
 }
 
 .subtitle {
     font-size: 1.2rem;
     margin-top: 10px;
+    color: #f0f0f0; /* Texto claro */
 }
 
 /* Header */
 header {
     display: flex;
-    align-items: center; /* Alinea verticalmente el contenido */
-    justify-content: flex-start; /* Alinea el contenido a la izquierda */
-    background-color: hwb(0 50% 33%);
-    color: rgb(7, 7, 7);
-    padding: 20px;
-    text-align: left; /* Alinea el texto a la izquierda */
-}
-
-.nav-logo {
-    width: 40px; /* Tamaño más pequeño de la imagen */
-    height: 50px; /* Mantiene la proporción de la imagen */
-    margin-right: 15px; /* Espacio entre la imagen y el título */
-    filter: brightness(1) invert(0); /* Cambia el color de la imagen si es necesario */
-}
-
-h1 {
-    margin: 0; /* Elimina el margen del título */
-    flex-grow: 1; /* Permite que el título ocupe el espacio disponible */
-}
-
-
-
-header {
-    display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #000;
-    color: #fff;
+    background-color: #1e1e1e; /* Color accesible */
+    color: #ffffff;
     padding: 20px;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
@@ -89,7 +68,13 @@ header {
 header h1 {
     margin: 0;
     flex-grow: 1;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Mejora contraste */
+}
+
+.nav-logo {
+    width: 40px;
+    height: 50px;
+    margin-right: 15px;
 }
 
 nav ul {
@@ -103,14 +88,14 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #ff4500;
+    color: #ffa500; /* Contraste accesible */
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #ffcc00;
+    color: #ffd700; /* Color más claro para hover */
 }
 
 /* Main section */
@@ -136,10 +121,11 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+    color: #ffffff;
 }
 
 table, th, td {
-    border: 1px solid #ff4500;
+    border: 1px solid #ffa500;
 }
 
 th, td {
@@ -148,51 +134,68 @@ th, td {
 }
 
 th {
-    background-color: #ff4500;
-    color: #fff;
+    background-color: #ffa500;
+    color: #000000;
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #cc0000;
+    background-color: #333333;
 }
-.edit-btn, .delete-btn {
-    margin-left: 10px;
+
+/* Botones */
+button {
+    background-color: #ffa500; /* Botón accesible */
+    color: #000000; /* Contraste adecuado */
     border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
+    padding: 10px 15px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background-color: #ffd700; /* Hover con contraste suficiente */
+    transform: scale(1.05);
+}
+
+button:focus {
+    outline: 2px solid #ffd700;
+    outline-offset: 3px;
 }
 
 .edit-btn {
-    background-color: #ffcc00; /* Color amarillo para editar */
+    background-color: #ffd700;
+    color: #000000;
 }
 
 .edit-btn:hover {
-    background-color: #f39c12;
+    background-color: #ffbf00;
 }
 
 .delete-btn {
-    background-color: #ff4500; /* Color rojo para eliminar */
+    background-color: #e63946;
+    color: #ffffff;
 }
 
 .delete-btn:hover {
-    background-color: #cc0000;
+    background-color: #b71c1c;
 }
-
 
 /* Secciones de contenido */
 .content-container {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #333;
+    background-color: #333; /* Fondo accesible */
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
 }
 
 h2 {
-    border-bottom: 2px solid hwb(125 3% 6%);
+    border-bottom: 2px solid #ffa500;
     padding-bottom: 5px;
     margin-bottom: 20px;
 }
@@ -203,7 +206,7 @@ h2 {
 
 .character {
     margin: 20px 0;
-    border: 2px solid hwb(125 3% 6%);
+    border: 2px solid #ffa500;
     border-radius: 10px;
     padding: 10px;
     background-color: #1c1c1c;
@@ -219,44 +222,6 @@ h2 {
     height: auto;
     border-radius: 10px;
 }
-/* Styles for the character form */
-#characterForm {
-    background-color: #444;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-#characterForm label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-#characterForm input, 
-#characterForm textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ffcc00;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-#characterList {
-    list-style-type: none;
-    padding: 0;
-}
-
-#characterList li {
-    background-color: #cc0000;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-#characterList li:hover {
-    background-color: #ff4500;
-}
 
 /* Form section */
 form {
@@ -268,55 +233,24 @@ form {
 label {
     display: block;
     margin: 10px 0 5px;
+    color: #ffffff;
 }
 
 input, textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ffcc00;
+    border: 1px solid #ffd700;
     border-radius: 5px;
     margin-bottom: 15px;
 }
 
-button {
-    background-color: #ff4500;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #ffcc00;
-}
-
 /* Footer */
 footer {
-    background-color: #000;
+    background-color: #1e1e1e;
+    color: #ffffff;
     text-align: center;
     padding: 20px;
     position: relative;
     bottom: 0;
     width: 100%;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes zoomIn {
-    from {
-        transform: scale(0.8);
-    }
-    to {
-        transform: scale(1);
-    }
 }
