@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dragon Ball Z</title>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="icon" href="images/dragon.png" type="image/png">
-    </head>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +11,6 @@
     <header>
         <img src="https://i.gifer.com/CBan.gif" alt="Logo" class="nav-logo">
         <h1>Welcome to Dragon Ball Z</h1>
-
         <nav role="menu" aria-label="Main Navigation">
             <ul role="menu">
                 <li role="menuitem">
@@ -38,18 +30,11 @@
                 <li role="menuitem">
                     <a href="#contact">Contact</a>
                 </li>
-
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#Character">Character</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#contact">Contact</a></li>
-
             </ul>
         </nav>
-        
+       
     </header>
+
 
     <!-- Main content section -->
     <main>
@@ -57,22 +42,12 @@
             <div class="profile-container">
                 <figure>
                     <img src="https://i.gifer.com/75Z8.gif" alt="Arthur Morgan" class="profile-img">
-
                     <figcaption>GOKU - PROTAGONIST OF SPARKING ZERO!</figcaption>
                 </figure>
             </div>
         </section>
-        
+       
         <section id="character">
-
-                    <figcaption></figcaption>
-                </figure>
-                
-                
-            </div>
-        </section>
-        <section id="Character">
-
             <h2>Favorite Character</h2>
             <form id="characterForm">
                 <label for="characterName">Character Name:</label>
@@ -81,55 +56,17 @@
                 <textarea id="characterDescription" name="characterDescription" required></textarea>
                 <button type="submit">Add Character</button>
             </form>
-
             <ul id="characterList"></ul>
         </section>
+
 
         <!-- Accordion -->
-        <section id="details" class="accordion">
-            <h2>Story Details</h2>
-            <button id="accordionHeader" aria-expanded="false" aria-controls="accordionContent">
-                Show Story Details
-            </button>
-            <div id="accordionContent" role="region" aria-labelledby="accordionHeader" class="hidden">
-                <p>Dragon Ball: Sparking! ZERO is a 3D fighting game inspired by the Dragon Ball Z anime, offering fast-paced battles with iconic characters, special moves, and destructible environments.</p>
-                <div class="character">
-                    <h3>Vegeta</h3>
-                    <figure>
-                        <img src="https://i.gifer.com/X9VB.gif" alt="Vegeta">
-                        <figcaption>Proud and competitive, he constantly seeks to surpass Goku.</figcaption>
-                    </figure>
-                </div>
-                <div class="character">
-                    <h3>Goku</h3>
-                    <figure>
-                        <img src="https://i.gifer.com/75Z8.gif" alt="Goku">
-                        <figcaption>Optimistic and carefree, he enjoys challenges and looks for strong opponents.</figcaption>
-                    </figure>
-                </div>
-                <div class="character">
-                    <h3>Gohan</h3>
-                    <figure>
-                        <img src="https://i.gifer.com/75ZA.gif" alt="Gohan">
-                        <figcaption>Intelligent and sensitive, he displays great fighting potential when facing threats.</figcaption>
-                    </figure>
-                </div>
-            </div>
-        </section>
-
-
-        
-            
-            <ul id="characterList"></ul>
-        </section>
-        
-
         <section id="details">
             <div class="content-container">
                 <h2>Story Details</h2>
                 <p>Dragon Ball: Sparking! ZERO is a 3D fighting game inspired by the Dragon Ball Z anime, offering fast-paced battles with iconic characters, special moves, and destructible environments.</p>
                 <button id="revealBtn" class="styled-btn">Show Characters</button>
-                
+               
                 <div id="character-info" class="hidden">
                     <div class="character">
                         <h3>Vegeta</h3>
@@ -169,9 +106,6 @@
 
 
     <!-- Contact section -->
-
-    <!-- Contact section with a short form -->
-
     <section id="contact">
         <h2>Contact Us</h2>
         <form action="/submit" method="post">
@@ -185,168 +119,81 @@
         </form>
     </section>
 
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Dragon Ball Z. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Referencias a elementos del DOM
-        const form = document.getElementById('characterForm');
-        const characterList = document.getElementById('characterList');
-
-        // Función para cargar personajes desde localStorage
-        function loadCharacters() {
-            const characters = JSON.parse(localStorage.getItem('characters')) || [];
-            characters.forEach(character => addCharacterToDOM(character));
-        }
-
-        // Función para guardar personajes en localStorage
-        function saveCharacters() {
-            const characters = [];
-            characterList.querySelectorAll('li').forEach(li => {
-                const name = li.querySelector('.name').textContent;
-                const description = li.querySelector('.description').textContent;
-                characters.push({ name, description });
-            });
-            localStorage.setItem('characters', JSON.stringify(characters));
-        }
-
-        // Función para añadir un personaje al DOM
-        function addCharacterToDOM(character) {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <div>
-                    <strong class="name">${character.name}</strong>
-                    <p class="description">${character.description}</p>
-                </div>
-                <div>
-                    <button class="edit-btn">Edit</button>
-                    <button class="delete-btn">Delete</button>
-                </div>
-            `;
-
-            // Botón de edición
-            li.querySelector('.edit-btn').addEventListener('click', () => {
-                const name = prompt('Edit Character Name:', character.name);
-                const description = prompt('Edit Description:', character.description);
-                if (name && description) {
-                    li.querySelector('.name').textContent = name;
-                    li.querySelector('.description').textContent = description;
-                    saveCharacters();
-                }
-            });
-
-            // Botón de eliminación
-            li.querySelector('.delete-btn').addEventListener('click', () => {
-                li.remove();
-                saveCharacters();
-            });
-
-            characterList.appendChild(li);
-        }
-
-        // Manejo del formulario
-        form.addEventListener('submit', event => {
-            event.preventDefault();
-            const name = form.characterName.value.trim();
-            const description = form.characterDescription.value.trim();
-
-            if (name && description) {
-                const character = { name, description };
-                addCharacterToDOM(character);
-                saveCharacters();
-                form.reset();
-            }
-        });
-
-        // Cargar personajes al iniciar
-        loadCharacters();
-    </script>
-</body>
-</html>
-Explicación del código:
-Formulario para añadir personajes:
-
-El usuario ingresa un nombre y una descripción, y al enviar el formulario, el personaje se añade a la lista.
-Edición y eliminación de personajes:
-
-Cada elemento tiene botones de editar y eliminar.
-Al editar, se usan prompt() para actualizar los datos.
-Al eliminar, el elemento se elimina del DOM y se actualiza el almacenamiento.
-Persistencia con localStorage:
-
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const revealBtn = document.getElementById('revealBtn');
             const characterInfo = document.getElementById('character-info');
             const characterForm = document.getElementById('characterForm');
             const characterList = document.getElementById('characterList');
-        
+       
             characterInfo.classList.add('hidden');
-        
+       
             revealBtn.addEventListener('click', function() {
                 characterInfo.classList.toggle('hidden');
-        
+       
                 if (!characterInfo.classList.contains('hidden')) {
                     this.textContent = 'Hide Characters';
                 } else {
                     this.textContent = 'Show Characters';
                 }
             });
-        
+       
             // Load characters from localStorage
             const loadCharacters = () => {
                 const characters = JSON.parse(localStorage.getItem('characters')) || [];
                 characters.forEach(character => addCharacterToList(character.name, character.description));
             };
-        
+       
             // Add character to the list and localStorage
             const addCharacterToList = (name, description) => {
                 const li = document.createElement('li');
                 li.textContent = `${name}: ${description}`;
                 li.dataset.name = name; // Store name for editing and deleting
-        
+       
                 const editBtn = document.createElement('button');
                 editBtn.textContent = 'Edit';
                 editBtn.className = 'edit-btn';
                 editBtn.onclick = () => editCharacter(name, description, li);
-        
+       
                 const deleteBtn = document.createElement('button');
                 deleteBtn.textContent = 'Delete';
                 deleteBtn.className = 'delete-btn';
                 deleteBtn.onclick = () => deleteCharacter(name, li);
-        
+       
                 li.appendChild(editBtn);
                 li.appendChild(deleteBtn);
                 characterList.appendChild(li);
             };
-        
+       
             // Handle character form submission
             characterForm.addEventListener('submit', function(event) {
                 event.preventDefault();
-        
+       
                 const characterName = document.getElementById('characterName').value;
                 const characterDescription = document.getElementById('characterDescription').value;
-        
+       
                 // Add character to list and localStorage
                 const characters = JSON.parse(localStorage.getItem('characters')) || [];
                 characters.push({ name: characterName, description: characterDescription });
                 localStorage.setItem('characters', JSON.stringify(characters));
-        
+       
                 addCharacterToList(characterName, characterDescription);
                 characterForm.reset();
             });
-        
+       
             // Edit character function
             const editCharacter = (name, description, li) => {
                 document.getElementById('characterName').value = name;
                 document.getElementById('characterDescription').value = description;
-        
+       
                 deleteCharacter(name, li); // Remove character before re-adding after edit
             };
-        
+       
             // Delete character function
             const deleteCharacter = (name, li) => {
                 const characters = JSON.parse(localStorage.getItem('characters')) || [];
@@ -354,12 +201,11 @@ Persistencia con localStorage:
                 localStorage.setItem('characters', JSON.stringify(updatedCharacters));
                 characterList.removeChild(li);
             };
-        
+       
             // Load characters when the page is loaded
             loadCharacters();
         });
-        
+       
     </script>
-
 </body>
 </html>
