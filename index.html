@@ -18,7 +18,7 @@
                 </li>
                 <li role="menuitem" aria-haspopup="true" aria-expanded="false">
                     <a href="#character">Character</a>
-                    <ul role="menu" class="submenu hidden">
+                    <ul role="menu" class="submenu hidden" aria-label="Character submenu">
                         <li role="menuitem"><a href="#goku">Goku</a></li>
                         <li role="menuitem"><a href="#vegeta">Vegeta</a></li>
                         <li role="menuitem"><a href="#gohan">Gohan</a></li>
@@ -32,6 +32,7 @@
                 </li>
             </ul>
         </nav>
+        
        
     </header>
 
@@ -65,9 +66,9 @@
             <div class="content-container">
                 <h2>Story Details</h2>
                 <p>Dragon Ball: Sparking! ZERO is a 3D fighting game inspired by the Dragon Ball Z anime, offering fast-paced battles with iconic characters, special moves, and destructible environments.</p>
-                <button id="revealBtn" class="styled-btn">Show Characters</button>
+                <button id="revealBtn" class="styled-btn" aria-controls="character-info" aria-expanded="false">Show Characters</button>
                
-                <div id="character-info" class="hidden">
+                <div id="character-info" class="hidden" role="region" aria-labelledby="revealBtn">
                     <div class="character">
                         <h3>Vegeta</h3>
                         <figure>
@@ -92,6 +93,7 @@
                 </div>
             </div>
         </section>
+        
 
 
         <section id="events">
@@ -132,16 +134,18 @@
             const characterList = document.getElementById('characterList');
        
             characterInfo.classList.add('hidden');
-       
             revealBtn.addEventListener('click', function() {
                 characterInfo.classList.toggle('hidden');
-       
-                if (!characterInfo.classList.contains('hidden')) {
+                const isExpanded = !characterInfo.classList.contains('hidden');
+                this.setAttribute('aria-expanded', isExpanded.toString());
+            
+                if (isExpanded) {
                     this.textContent = 'Hide Characters';
                 } else {
                     this.textContent = 'Show Characters';
                 }
             });
+            
        
             // Load characters from localStorage
             const loadCharacters = () => {
