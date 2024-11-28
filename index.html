@@ -125,7 +125,11 @@
             <input type="email" id="email" name="email" required>
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
-            <button type="submit">Send</button>
+            <button type="button" id="alert-trigger">Send</button>
+            <div id="example" role="alert"></div>
+<script type="text/template" id="alert-template">
+  <p>Agrega Name or Message or Email</p>
+</script>
         </form>
     </section>
 
@@ -198,6 +202,20 @@
                 addCharacterToList(characterName, characterDescription);
                 characterForm.reset();
             });
+            'use strict';
+
+window.addEventListener('load', function () {
+  var button = document.getElementById('alert-trigger');
+
+  button.addEventListener('click', addAlert);
+});
+
+function addAlert() {
+  var example = document.getElementById('example');
+  var template = document.getElementById('alert-template').innerHTML;
+
+  example.innerHTML = template;
+}
        
             // Edit character function
             const editCharacter = (name, description, li) => {
@@ -218,6 +236,9 @@
             // Load characters when the page is loaded
             loadCharacters();
         });
+        
+
+
        
     </script>
 </body>
