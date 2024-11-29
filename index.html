@@ -104,16 +104,71 @@
         
 
 
-        <section id="events">
-            <h2>Upcoming Events</h2>
-            <p>Check out the events where you can learn more about Dragon Ball Z and its community.</p>
-            <ul>
-                <li>Devotion Ritual: October 25</li>
-                <li>Followers Meeting: November 10</li>
-            </ul>
+        
+        <!-- New Table Section -->
+        <section id="character-table">
+            <h2>Character Power Levels</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Character</th>
+                        <th>Power Level</th>
+                        <th>Special Attack</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Goku</td>
+                        <td>Over 9000</td>
+                        <td>Kamehameha</td>
+                    </tr>
+                    <tr>
+                        <td>Vegeta</td>
+                        <td>8500</td>
+                        <td>Galick Gun</td>
+                    </tr>
+                    <tr>
+                        <td>Gohan</td>
+                        <td>7500</td>
+                        <td>Masenko</td>
+                    </tr>
+                </tbody>
+            </table>
+            <li><a href="https://www.dragonballz.com" target="_blank">Official Dragon Ball Z Website</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Dragon_Ball_Z" target="_blank">Dragon Ball Z on Wikipedia</a></li>
         </section>
     </main>
+   
 
+     <!-- Video Section -->
+     <section id="video-section">
+        <h2>Explore Dragon Ball Z Universe</h2>
+        <video controls aria-describedby="video-description" width="640" height="360">
+            <source src="images/videoplayback (1).mp4" type="video/mp4">
+            <track src="images/SPARKING ZERO.mp4" kind="descriptions" srclang="en" label="Audio Descriptions">
+        </video>
+        <p id="video-description">
+            This video contains Closed Captions (CC)
+        </p>
+             <!-- Segundo video -->
+             <div>
+                <video controls width="640" height="360">
+                    <source src="images/SPARKING ZERO.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>
+                    This video contains Audio Descriptive (AD)
+                </p>
+            </div>
+        </div>
+        
+    </section>
+      <!-- Image Section with descriptive alt -->
+      <section id="decorative-image">
+        <h2>Explore the World of Dragon Ball Z</h2>
+        <img src="https://i.gifer.com/X9VB.gif" alt="Vegeta powering up in battle" class="highlight-img">
+    </section>
+</main>
 
     <!-- Contact section -->
     <section id="contact">
@@ -157,6 +212,16 @@
                     this.textContent = 'Show Characters';
                 }
             });
+            
+              // Toggle audio descriptions
+        const audioDescriptionBtn = document.getElementById('audio-description-btn');
+        audioDescriptionBtn.addEventListener('click', function () {
+            const isPressed = this.getAttribute('aria-pressed') === 'true';
+            this.setAttribute('aria-pressed', !isPressed);
+            this.textContent = !isPressed ? 'Disable Audio Descriptions' : 'Enable Audio Descriptions';
+            // Here you can implement actual audio description logic if needed
+            alert('Audio descriptions are now ' + (!isPressed ? 'enabled' : 'disabled'));
+        });
             
             
        
